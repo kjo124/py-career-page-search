@@ -1,0 +1,179 @@
+
+GlossaryTech_online_dictionary_for_IT_recruiters
+Filters
+Glossary
+HTML Front-end
+HyperText Markup Language, the document standard of the World Wide Web for creating web pages and web applications. HTML describes the structure of a web page semantically and originally included cues for the appearance of the document.
+
+See also: CSS, DOM, JavaScript
+
+Microservices Software Architecture
+A particular way of designing software apps as suites of independently deployable services. This architectural method is considered ideal when you have to enable support for a range of platforms and devices – spanning web, mobile, IoT & wearables.
+
+See also: API, Docker, SOA
+
+Design Patterns Software Architecture
+A general repeatable solution to a commonly occurring problem in software design. It is a description or template for how to solve a problem that can be used in many different situations.
+
+See also: Framework
+
+JavaScript frameworks Front-end
+Angular, React, Ember.js, extJS, Backbone, Knockout.js, D3.js, Sencha​, Mercury.js, ​WebRx, Vue.js​.
+
+SQL Databases
+Structured Query Language is a programming language used to create, modify, and manage data in a relational database managed by an appropriate database management system.
+
+See also: MS SQL Server, MySQL, PostgreSQL
+
+SaaS Cloud Computing
+Software as a service, SaaS for short, is a cloud computing software distribution model through which end users can access and use an application remotely via Internet browsers. An SaaS vendor houses and maintains the hardware that runs the app.
+
+See also: Azure, BaaS, Cloud Computing, IaaS, OpenStack, PaaS
+
+Distributed System Programming Concepts
+Software system in which components located on networked computers communicate and coordinate their actions by passing messages. Three significant characteristics of distributed systems are: concurrency of components, lack of a global clock, and independent failure of components.
+
+OOP Programming Paradigms
+Stands for object-oriented programming. Programming paradigm based on the concept of 'objects' (which are data structures that contain data, in the form of fields) often known as attributes; and code (in the form of procedures) often known as methods.
+
+See also: POP
+
+Functional programming Programming Paradigms
+Style of building the structure and elements of computer programs, that treats computation as the evaluation of mathematical functions and avoids changing-state and mutable data.
+
+DevOps DevOps
+Development + Operations. Software development method that emphasizes communication, collaboration, integration and automation. The method acknowledges the interdependence of software development, QA, and IT operations, and aims to help an organization rapidly produce software products and services and to improve operations performance.
+
+SOLID Software Architecture
+An abbreviation for the 'first five principles' of OOD and OOP. These basic principles help to create good software architecture. SOLID – SRP, OCP, LSP, ISP, DIP.
+
+See also: OOD, OOP
+
+RESTful API Software Architecture
+An API that uses HTTP requests to GET, PUT, POST and DELETE data. A RESTful API breaks down a transaction to create a series of small modules. Each module addresses a particular underlying part of the transaction.
+
+See also: API, REST, SOAP
+
+HTTP DevOps
+HyperText Transfer Protocol is an application protocol for data tranmission in the form of hypertext documents in the "HTML" format, is currently used to transfer arbitrary data and it is the basis for data transfer for the World Wide Web.
+
+See also: FTP, SMTP
+
+Database Databases
+A collection of digital information, that is organized in such a way that it can be easily managed. The information is stored and processed on a computer with or without human assistance. Traditional databases are organized by areas, records, and files.
+
+See also: NoSQL, NoSQL databases, RDBMS, SQL
+
+SSL DevOps
+Secure Sockets Layer is a technology for establishing an encrypted link between a server and a client. The SSL certificate begins to encrypt any data that comes from the client computer to your server. At the same time, the usual link in the HTTP browser turns into HTTPS, where "s" means secure-protected.
+
+See also: HTTP, https
+
+JSON Software Architecture
+JavaScript Object Notation is a syntax for storing and exchanging data. A way to store information in an organized, easy-to-access manner. Gives us a human-readable collection of data that we can access in a really logical manner.
+
+See also: AJAX, jQuery, XML
+
+XML Software Architecture
+Extensible Markup Language is a language with a simple formal syntax, convenient for creating and processing documents by programs and at the same time convenient for reading and creating documents by a person.
+
+See also: HTML, JSON, XAML
+
+REST Software Architecture
+Representational State Transfer is an architectural style of the interaction of components of the distributed application in a network. REST is an agreed set of constraints.
+
+See also: GraphQL, RESTful API, SOAP
+
+Git Tools
+A lightweight and fast distributed VCS for small and large projects alike, which it handles with the same efficiency. Git handles all changes via a series of commands. It also provides support for nonlinear, distributed workflows.
+
+Gradle Back-end
+Build tool that does not use XML for build script, instead it provides a domain specific language (DSL). This DSL is based on groovy, another JVM compatible language. Gradle combines the power and flexibility of Apache Ant with the dependency management and conventions of Apache Maven
+
+See also: Maven, XML
+
+Maven Back-end
+Project management and comprehension tool that provides developers a complete build life cycle framework. Development team can automate the project's build infrastructure in almost no time as Maven uses a standard directory layout and a default build life cycle.
+
+sbt Back-end
+Scala Build Tool. An alternative to ANT and Maven made with Scala in mind. Its main features is native support for compiling Scala code and integrating with many Scala test frameworks.
+
+See also: Gradle, Maven
+
+Front-end Front-end
+Front-end is a term that involves the building of webpages and user interfaces for web-applications. It implements the structure, design, behavior, and animation of everything you see on the screen when you open up websites, web applications, or mobile apps. The core 3 technologies that all modern front-end web developers work to master are HTML5, CSS, and JavaScript.
+
+See also: AJAX, Angular, CSS, HTML, JavaScript, ReactJS
+
+Java Back-end
+A general-purpose, object-oriented programming language used for web development. Java is one of the most popular programming languages in use, particularly for client-server web applications.
+
+See also: C language, PHP, Python
+
+Android Mobile Dev.
+A mobile operating system for smartphones, tablets and netbooks. Designed primarily for touchscreen mobile devices. The Android operating system is based on the modified Linux kernel.
+
+See also: iOS, Linux
+
+iOS Mobile Dev.
+A mobile operating system for smartphones, electronic tablets, portable players and other devices. Developed and manufactured by the American company Apple exclusively for its own products.
+
+See also: iOS SDK, Objective-C, Swift, UIKit, WatchKit, Xcode
+
+Scala Back-end
+Modern and powerful programming language invented in Switzerland. Scala has full support for functional programming and a very strong static type system. Designed to be concise, many of Scala's design decisions were inspired by criticism of the shortcomings of Java.
+
+See also: Elixir, Go, Rust
+
+Back-end General Terms
+Or the 'server-side' of website development. Basically it is the programming that users don’t see in the browser, but what also powers the website. Back-end facilitates communication between the browser and server, provides smooth functionality akin to a desktop application.
+
+See also: Database
+
+RequireJS Front-end
+JavaScript file and module loader that helps load the scripts and manage dependencies between them. Optimized for in-browser use, but it can be used in other JavaScript environments, like Rhino and Node.
+
+See also: Dojo, jQuery, Node.js
+
+UML Software Architecture
+Unified Modeling Language is a standardized modeling language used to specify, visualize, construct, and document models of software systems, including their structure and design.
+
+Google Drive Tools
+A cloud-based file storage, that includes basic Office suite tools: Docs, Sheets, Slides, and others. It provides features for sharing and editing documents in collaboration with other Google Drive users, public and private or limited access. More features can be added via Add-ons.
+
+Product Product Management
+A service or an item that is offered for sale. It may have different forms: virtual, cyber or physical.
+
+Testing QA
+Testing is defined as an activity to check whether the actual results match the expected results
+
+Compliance Leadership
+Compliance refers to following the relevant laws and regulations for your industry.
+
+Classification Data Science
+The process of predicting the class of given data points. Classes are sometimes called as targets/ labels or categories. Classification predictive modeling is the task of approximating a mapping function (f) from input variables (X) to discrete output variables (y).
+
+Software Development General Terms
+The process of conceiving, specifying, designing, programming, documenting, testing, and bug fixing involved in creating and maintaining applications, frameworks, or other software components.
+
+36
+terms
+Reset
+Reset all filters
+ Software Architecture 8
+ Back-end 5
+ Front-end 4
+ DevOps 3
+ Programming Paradigms 2
+ Tools 2
+ Mobile Dev. 2
+ Databases 2
+ General Terms 2
+ Product Management 1
+ Cloud Computing 1
+ Programming Concepts 1
+ QA 1
+ Leadership 1
+ Data Science 1
+Hiring Software Engineers?
+Post your jobs on Relocate.me
