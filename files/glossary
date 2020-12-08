@@ -17,9 +17,6 @@ A general repeatable solution to a commonly occurring problem in software design
 
 See also: Framework
 
-JavaScript frameworks Front-end
-Angular, React, Ember.js, extJS, Backbone, Knockout.js, D3.js, Sencha​, Mercury.js, ​WebRx, Vue.js​.
-
 SQL Databases
 Structured Query Language is a programming language used to create, modify, and manage data in a relational database managed by an appropriate database management system.
 
@@ -92,6 +89,11 @@ Build tool that does not use XML for build script, instead it provides a domain 
 
 See also: Maven, XML
 
+JavaScript Front-end
+A client-side scripting language primarily used to make web pages interactive. In other words, it's responsible for the 'behavior' of a website, i.e. how HTML elements and CSS style animate and move around on the page.
+
+See also: CSS, DOM, HTML
+
 Maven Back-end
 Project management and comprehension tool that provides developers a complete build life cycle framework. Development team can automate the project's build infrastructure in almost no time as Maven uses a standard directory layout and a default build life cycle.
 
@@ -141,6 +143,11 @@ Unified Modeling Language is a standardized modeling language used to specify, v
 Google Drive Tools
 A cloud-based file storage, that includes basic Office suite tools: Docs, Sheets, Slides, and others. It provides features for sharing and editing documents in collaboration with other Google Drive users, public and private or limited access. More features can be added via Add-ons.
 
+Screen DevOps
+A full-screen window manager that multiplexes a physical terminal between several processes, typically interactive shells. Programs continue to run when their window is currently not visible and even when the whole screen session is detached from the users terminal.
+
+See also: GNU, Linux
+
 Product Product Management
 A service or an item that is offered for sale. It may have different forms: virtual, cyber or physical.
 
@@ -156,14 +163,15 @@ The process of predicting the class of given data points. Classes are sometimes 
 Software Development General Terms
 The process of conceiving, specifying, designing, programming, documenting, testing, and bug fixing involved in creating and maintaining applications, frameworks, or other software components.
 
-36
+14% Back-end
+37
 terms
 Reset
 Reset all filters
  Software Architecture 8
  Back-end 5
+ DevOps 4
  Front-end 4
- DevOps 3
  Programming Paradigms 2
  Tools 2
  Mobile Dev. 2
