@@ -24,7 +24,22 @@ file1.writelines(soup.get_text())
 # contrl-a and copy categoriesraw from filters tab
 # open glossary tab and control-a copy Glossary
 # create a dicationary of terms
+categoriesFile = open(
+    "/Users/kyleodin/Documents/GitHub/py-career-page-search/files/categoriesraw", "r")
+categoriesList = []
 
+readyForCategories = 0
+for line in categoriesFile:
+    if line == "Hiring Software Engineers?\n":
+        break
+    if readyForCategories == 1:
+        category = line[1:]
+        category = category[:-3]
+        categoriesList.append(category)
+    if line == "Reset all filters\n":
+        readyForCategories = 1
+
+print(categoriesList)
 # go back to fill text file and count all terms from dicationary
 # arange in assending order
 # assign terms to jobs
