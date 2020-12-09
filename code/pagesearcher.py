@@ -18,7 +18,7 @@ soup = BeautifulSoup(html, 'html.parser')
 # assign text to jobs
 # create full text of all jobs with only spaces between all terms
 # create html from full text of jobs
-file1 = open("/Users/kyleodin/Documents/GitHub/py-career-page-search/files/output.html", "w+")
+file1 = open("/Users/kyleodin/Documents/GitHub/py-career-page-search/files/output", "w+")
 file1.writelines(soup.get_text())
 # open in online text editor in chrome
 # contrl-a and copy categoriesraw from filters tab
