@@ -30,17 +30,45 @@ categoriesList = []
 
 readyForCategories = 0
 for line in categoriesFile:
-    if line == "Hiring Software Engineers?\n":
+    if line == "Hiring Software Engineers?\n":  # end of file
         break
     if readyForCategories == 1:
         category = line[1:]
-        category = category[:-3]
+        # remove digits from string
+        # See this for next line: https://stackoverflow.com/a/12851835
+        category = ''.join([i for i in category if not i.isdigit()])
         categoriesList.append(category)
     if line == "Reset all filters\n":
         readyForCategories = 1
 
-print(categoriesList)
+# print(categoriesList)
+
+termsFile = open(
+    "/Users/kyleodin/Documents/GitHub/py-career-page-search/files/glossary", "r")
+termsList = []
+
+readyForterms = 0
+for line in termsFile:
+    if "%" in line:  # end of file
+        break
+    if readyForterms == 1:
+        if line == "\n":
+            pass
+        elif "See also:" in line:
+            pass  # See also line, do nothing
+        elif len(line) < 99:
+            terms = line
+            # remove category from line
+            termsList.append(terms)
+            # maybe just create a database of each of these
+        if len(line) > 99:
+            pass  # glossary of term, do nothing
+    if line == "Glossary\n":
+        readyForterms = 1
+
+print(termsList)
 # go back to fill text file and count all terms from dicationary
+# string.count(substring, start=…, end=…)
 # arange in assending order
 # assign terms to jobs
-# evaluate for to long term goals to inprove on
+# evaluate for to long terms goals to inprove on
