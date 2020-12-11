@@ -1,5 +1,6 @@
 import urllib.request
 from bs4 import BeautifulSoup
+import re
 
 url = "https://boards.greenhouse.io/paytronix/jobs/2332500?gh_src=0e280c641us"
 
@@ -37,6 +38,7 @@ for line in categoriesFile:
         # remove digits from string
         # See this for next line: https://stackoverflow.com/a/12851835
         category = ''.join([i for i in category if not i.isdigit()])
+        category = category[:-2]
         categoriesList.append(category)
     if line == "Reset all filters\n":
         readyForCategories = 1
@@ -56,12 +58,17 @@ for line in termsFile:
             pass
         elif "See also:" in line:
             pass  # See also line, do nothing
-        elif len(line) < 99:
+        elif len(line) < 83:
             terms = line
+            terms = terms[:-1]
             # remove category from line
+            for category in categoriesList:
+                regex = re.compile(category)
+                terms = regex.sub('', terms)
+            terms = terms[:-1]
             termsList.append(terms)
             # maybe just create a database of each of these
-        if len(line) > 99:
+        if len(line) > 83:
             pass  # glossary of term, do nothing
     if line == "Glossary\n":
         readyForterms = 1
