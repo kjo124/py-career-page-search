@@ -73,9 +73,33 @@ for line in termsFile:
     if line == "Glossary\n":
         readyForterms = 1
 
-print(termsList)
+# print(termsList)
+
 # go back to fill text file and count all terms from dicationary
-# string.count(substring, start=…, end=…)
+# create dictionary
+termDict = {}
+
+for term in termsList:
+    termDict[term] = 0
+
+fileCounting = open(
+    "/Users/kyleodin/Documents/GitHub/py-career-page-search/files/output", "r")
+
+# go through line by line, make the line and term lowercase striped of
+# whitespace and count the terms
+for line in fileCounting:
+    line = line.replace(" ", "")
+    line = line.lower()
+    for term in termsList:
+        termCopy = term.replace(" ", "")
+        termCopy = termCopy.lower()
+        if line.count(termCopy) > 0:
+            count = line.count(termCopy) + termDict[term]
+            termDict[term] = count
 # arange in assending order
+termDict = dict(sorted(termDict.items(), key=lambda item: item[1]))
+# remove last item
+termDict.pop("")
+print(termDict)
 # assign terms to jobs
 # evaluate for to long terms goals to inprove on
