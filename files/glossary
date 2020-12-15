@@ -2,143 +2,225 @@
 GlossaryTech_online_dictionary_for_IT_recruiters
 Filters
 Glossary
-HTML Front-end
-HyperText Markup Language, the document standard of the World Wide Web for creating web pages and web applications. HTML describes the structure of a web page semantically and originally included cues for the appearance of the document.
+ReactJS Front-end
+JavaScript library which is used for building user interfaces specifically for single page applications and handling view layer for web and mobile apps. React also allows to create reusable UI components.
 
-See also: CSS, DOM, JavaScript
+See also: Angular, Aurelia, Vue
+
+TypeScript Front-end
+Extension (a “superset”) of the JavaScript language. It differentiates itself from competitors like CoffeeScript and Dart in that plain JavaScript code can be intermixed with TypeScript. Primarily provides optional static typing, classes and interfaces.
+
+See also: CoffeeScript, Dart, JavaScript
+
+GraphQL Front-end
+A query language designed to build client applications by providing an intuitive and flexible syntax and system for describing their data requirements and interactions.
+
+See also: REST
+
+Docker DevOps
+A software virtualization platform that allows user create a container inside your computer. Container is a small virtual computer with it’s own OS and all setup that is needed, where the user can run any software as on the usual computer.
+
+See also: Virtualization
 
 Microservices Software Architecture
 A particular way of designing software apps as suites of independently deployable services. This architectural method is considered ideal when you have to enable support for a range of platforms and devices – spanning web, mobile, IoT & wearables.
 
 See also: API, Docker, SOA
 
-Design Patterns Software Architecture
-A general repeatable solution to a commonly occurring problem in software design. It is a description or template for how to solve a problem that can be used in many different situations.
+Elixir Back-end
+A dynamic, functional language, designed for building scalable & maintainable apps. Leverages the Erlang VM, known for running low-latency, distributed and fault-tolerant systems, while also being successfully used in web development and the embedded software domain.
 
-See also: Framework
+See also: Clojure, Erlang, Ruby
 
 SQL Databases
 Structured Query Language is a programming language used to create, modify, and manage data in a relational database managed by an appropriate database management system.
 
 See also: MS SQL Server, MySQL, PostgreSQL
 
-SaaS Cloud Computing
-Software as a service, SaaS for short, is a cloud computing software distribution model through which end users can access and use an application remotely via Internet browsers. An SaaS vendor houses and maintains the hardware that runs the app.
+API Software Architecture
+Application Programming Interface is the interface between the site and third-party programs and servers. On different online services or platforms, we can use the API to log in, instead of registering, through accounts in social networks.
 
-See also: Azure, BaaS, Cloud Computing, IaaS, OpenStack, PaaS
+See also: RESTful API, SOA, Web services
 
-Distributed System Programming Concepts
-Software system in which components located on networked computers communicate and coordinate their actions by passing messages. Three significant characteristics of distributed systems are: concurrency of components, lack of a global clock, and independent failure of components.
+Cloud Computing Cloud Computing
+The delivery of computing services – servers, storage, databases, networking, software, analytics and more – over the Internet (“the cloud”). Most cloud computing services fall into three broad categories: IaaS, PaaS and SaaS.
 
-OOP Programming Paradigms
-Stands for object-oriented programming. Programming paradigm based on the concept of 'objects' (which are data structures that contain data, in the form of fields) often known as attributes; and code (in the form of procedures) often known as methods.
+See also: Amazon EC2, Azure, BaaS, Google Cloud Platform, Heroku, IaaS, PaaS, SaaS
 
-See also: POP
+Data Science Data Science
+An interdisciplinary study of information sources, what the information represents and ways of turning it into a valuable resource when creating business and IT strategies. It uses methods and techniques of statistics and data analysis to analyze and understand a phenomenon.
 
-Functional programming Programming Paradigms
-Style of building the structure and elements of computer programs, that treats computation as the evaluation of mathematical functions and avoids changing-state and mutable data.
+See also: Big Data
 
-DevOps DevOps
-Development + Operations. Software development method that emphasizes communication, collaboration, integration and automation. The method acknowledges the interdependence of software development, QA, and IT operations, and aims to help an organization rapidly produce software products and services and to improve operations performance.
+Machine Learning Data Science
+A field of study which explore that capability of a computer to learn, akin to a human brain. It also studies the construction of algorithms that can learn from and make predictions on data. Basically, it’s intention is to teach a computer how to learn at its own volition, and not because it has been programmed to.
 
-SOLID Software Architecture
-An abbreviation for the 'first five principles' of OOD and OOP. These basic principles help to create good software architecture. SOLID – SRP, OCP, LSP, ISP, DIP.
+See also: Data Science
 
-See also: OOD, OOP
+UI Web Design
+Short for 'User Interface'. Everything designed into an information device with which a customer/user may interact.
 
-RESTful API Software Architecture
-An API that uses HTTP requests to GET, PUT, POST and DELETE data. A RESTful API breaks down a transaction to create a series of small modules. Each module addresses a particular underlying part of the transaction.
+UX Web Design
+Short for User Experience. Refers to a person's emotions and attitudes about using a particular product, system or service.
 
-See also: API, REST, SOAP
+Version Control System (VCS) Tools
+VCS, also known as SCM (Source Control Management), is a way to manage and document changes developers make to software code.​
 
-HTTP DevOps
-HyperText Transfer Protocol is an application protocol for data tranmission in the form of hypertext documents in the "HTML" format, is currently used to transfer arbitrary data and it is the basis for data transfer for the World Wide Web.
+Scalability Programming Concepts
+Ability of a system, network to handle a growing amount of work in a capable manner or its ability to be enlarged to accommodate that growth.The capability of a system to increase its total output under an increased load when resources (typically hardware) are added.
 
-See also: FTP, SMTP
+Accessibility (a11y) Programming Concepts
+Web accessibility means that people with disabilities can use the Web.
 
-Database Databases
-A collection of digital information, that is organized in such a way that it can be easily managed. The information is stored and processed on a computer with or without human assistance. Traditional databases are organized by areas, records, and files.
+OS DevOps
+Operating System is a program that allows to interact with the computer - all of the software and hardware on your computer. The operating system usually consists of the kernel of the operating system and the base set of applications.
 
-See also: NoSQL, NoSQL databases, RDBMS, SQL
+See also: Linux, UNIX, Windows
 
-SSL DevOps
-Secure Sockets Layer is a technology for establishing an encrypted link between a server and a client. The SSL certificate begins to encrypt any data that comes from the client computer to your server. At the same time, the usual link in the HTTP browser turns into HTTPS, where "s" means secure-protected.
+Agile Development Methodologies
+A time-boxed, iterative approach to software delivery that builds software incrementally from the start of the project, instead of trying to deliver it all at once near the end.
 
-See also: HTTP, https
+See also: Kanban, Scrum, Waterfall
 
-JSON Software Architecture
-JavaScript Object Notation is a syntax for storing and exchanging data. A way to store information in an organized, easy-to-access manner. Gives us a human-readable collection of data that we can access in a really logical manner.
+R language Data Science
+A programming language and software environment, commonly used for statistical computing within data heavy roles such as data mining, statistics and working with graphics. The language was created as a language similar to S.
 
-See also: AJAX, jQuery, XML
+See also: Data Mining, GNU
 
-XML Software Architecture
-Extensible Markup Language is a language with a simple formal syntax, convenient for creating and processing documents by programs and at the same time convenient for reading and creating documents by a person.
+AWS Cloud Computing
+A secure cloud services platform, offering compute power, database storage, content delivery and other functionality.
 
-See also: HTML, JSON, XAML
+See also: Amazon EC2, Amazon S3
+
+Data Scientist Tech Roles
+A person, who analyzes large amounts of data and solves complex problems.
+
+IoT General Terms
+Short for Internet of Things. The concept of connecting any device with an on and off switch to the Internet (and/or to each other). These may be anything from mobile devices and headphones to washing machines or coffee makers.
+
+See also: Blockchain
 
 REST Software Architecture
 Representational State Transfer is an architectural style of the interaction of components of the distributed application in a network. REST is an agreed set of constraints.
 
 See also: GraphQL, RESTful API, SOAP
 
+Hardware General Terms
+The physical components that make up a computer system or other telecommunication devices, while software is instructions that can be stored and run by hardware.
+
+See also: Malware
+
 Git Tools
 A lightweight and fast distributed VCS for small and large projects alike, which it handles with the same efficiency. Git handles all changes via a series of commands. It also provides support for nonlinear, distributed workflows.
 
-Gradle Back-end
-Build tool that does not use XML for build script, instead it provides a domain specific language (DSL). This DSL is based on groovy, another JVM compatible language. Gradle combines the power and flexibility of Apache Ant with the dependency management and conventions of Apache Maven
+Python Back-end
+Popular general purpose programming language whose philosophy focuses mainly on code readability and maintainability. As a high level, interpreted language, Python is easy to learn for those who want to start coding.
 
-See also: Maven, XML
+See also: C#, Java, PHP
 
-JavaScript Front-end
-A client-side scripting language primarily used to make web pages interactive. In other words, it's responsible for the 'behavior' of a website, i.e. how HTML elements and CSS style animate and move around on the page.
+Linux DevOps
+Unix-like operating system based on the Linux kernel, including one or another set of utilities and GNU project programs, and other components. Like the Linux kernel, systems based on it are generally created and distributed in accordance with the model of free and open source.
 
-See also: CSS, DOM, HTML
+See also: CentOS, FreeBSD, UNIX
 
-Maven Back-end
-Project management and comprehension tool that provides developers a complete build life cycle framework. Development team can automate the project's build infrastructure in almost no time as Maven uses a standard directory layout and a default build life cycle.
+Unit testing QA
+A process in programming, allowing to check the correctness of a unit of source code. It is used to write tests for each non-trivial function or method. This allows you to check whether the next change in the code led to errors in the already tested locations of the program.
 
-sbt Back-end
-Scala Build Tool. An alternative to ANT and Maven made with Scala in mind. Its main features is native support for compiling Scala code and integrating with many Scala test frameworks.
+See also: Functional testing, Jasmine, Jest, JUnit, Mocha, NUnit, Regression testing, xUnit.net
 
-See also: Gradle, Maven
+Framework General Terms
+A universal software environment that provides particular functionality to facilitate development of software applications, products and solutions. It indicates what kind of programs can be built and how they would interrelate. It can also specify programming interfaces or tools.
+
+See also: Software Architecture
+
+Pandas Data Science
+BSD-licensed library providing high-performance, easy-to-use data structures and data analysis tools for Python. Pandas provides two additional data containers to Python (Series & DataFrame), as well as useful data processing functionality around handling of missing data, set comparisons, and vectorization.
+
+See also: matplotlib, NumPy
+
+NumPy Data Science
+Fundamental package for scientific computing with Python. NumPy is the core library in Python for array manipulation and thus a large part of numerical and scientific computation based on this language.
+
+See also: matplotlib, Pandas
 
 Front-end Front-end
 Front-end is a term that involves the building of webpages and user interfaces for web-applications. It implements the structure, design, behavior, and animation of everything you see on the screen when you open up websites, web applications, or mobile apps. The core 3 technologies that all modern front-end web developers work to master are HTML5, CSS, and JavaScript.
 
 See also: AJAX, Angular, CSS, HTML, JavaScript, ReactJS
 
-Java Back-end
-A general-purpose, object-oriented programming language used for web development. Java is one of the most popular programming languages in use, particularly for client-server web applications.
+C++ Back-end
+An object-oriented programming language and incorporates all the features offered by C. C++ started its journey as C with classes. Gradually, it has evolved and despite the popularity of other programming languages like C# and Java, C, C++ holds its own as one of the most widely used languages for scripting. In applications, C++ is ubiquitous.
 
-See also: C language, PHP, Python
-
-Android Mobile Dev.
-A mobile operating system for smartphones, tablets and netbooks. Designed primarily for touchscreen mobile devices. The Android operating system is based on the modified Linux kernel.
-
-See also: iOS, Linux
-
-iOS Mobile Dev.
-A mobile operating system for smartphones, electronic tablets, portable players and other devices. Developed and manufactured by the American company Apple exclusively for its own products.
-
-See also: iOS SDK, Objective-C, Swift, UIKit, WatchKit, Xcode
-
-Scala Back-end
-Modern and powerful programming language invented in Switzerland. Scala has full support for functional programming and a very strong static type system. Designed to be concise, many of Scala's design decisions were inspired by criticism of the shortcomings of Java.
-
-See also: Elixir, Go, Rust
+See also: C language, Visual Studio
 
 Back-end General Terms
 Or the 'server-side' of website development. Basically it is the programming that users don’t see in the browser, but what also powers the website. Back-end facilitates communication between the browser and server, provides smooth functionality akin to a desktop application.
 
 See also: Database
 
+Embedded Embedded
+A term used to describe an object, software, or hardware that is independent and doesn't need an external program or device to run it.
+
+See also: Embedded C, Embedded Java
+
+Embedded C Embedded
+A set of language extensions for the C programming language, used to program embedded microcontroller systems, allows to write programs, suitable for the microprocessor environment.
+
+See also: Embedded, Embedded Java, OLE
+
+Embedded Linux Embedded
+A complete Linux distribution targeted at embedded systems (smartphones, tablets, set-top boxes, personal media players, etc). One major example of it is Android, developed by Google.
+
+See also: Embedded, Embedded C, Embedded Java, Linux
+
+Algorithm General Terms
+A course of action, sequence of actions needed to accomplish a task (e.g., solve problem). There are different types of algorithms that can be used in different areas of life. In computer science, they are basis for all applications, ruling over how a program responds to certain actions or events.
+
+NoSQL Databases
+An approach to database design with a key-value store, document store, graph format for data and that differ significantly from the models used in traditional relational databases with access to data by means of SQL.
+
+See also: MongoDB, RDBMS, SQL
+
+Lean Software Development Development Methodologies
+An approach to software development that implements the set of tools for identification and steady elimination of waste. It consists of seven principles that direct how to optimize development and maintain a team.
+
+See also: OpenProject
+
 RequireJS Front-end
 JavaScript file and module loader that helps load the scripts and manage dependencies between them. Optimized for in-browser use, but it can be used in other JavaScript environments, like Rhino and Node.
 
 See also: Dojo, jQuery, Node.js
 
-UML Software Architecture
-Unified Modeling Language is a standardized modeling language used to specify, visualize, construct, and document models of software systems, including their structure and design.
+Performance testing QA
+Testing, which is conducted to determine how quickly the computer system or part of it under a certain load. It can also serve to verify and confirm other attributes of system quality, such as scalability, reliability and resource consumption.
+
+See also: Automation Testing, Load testing, Stress testing
+
+MQTT DevOps
+Message Queue Telemetry Transport is a subscribe, lightweight messaging protocol, designed for constrained devices and high-latency or unreliable networks. Aims to minimise network bandwidth.
+
+See also: AMQP, HTTP, WebSockets
+
+UAT QA
+User Acceptance Testing is the final stage of testing, and its goal is to "touch" the functionality of end users for usability and the ability to work with it. After this testing, a decision is made to implement the product.
+
+Deployment DevOps
+The process of getting program, software system available for use, it encompasses all the processes involved in running software properly in its environment, including installation, configuration, running, testing, etc.
+
+See also: Quality Assurance (QA)
+
+Swagger Software Architecture
+A software framework for an Open API that is a specification for machine-readable interface files for describing, producing, consuming, and visualizing RESTful Web Services.
+
+See also: API
+
+Prototype Front-end
+JavaScript framework created as part of the foundation for Ajax support in Ruby on Rails. Distributed standalone, but also as part of larger projects, such as Ruby on Rails, script.aculo.us and Rico.
+
+See also: Backbone.js, jQuery, Underscore.js
+
+Debugging Tools
+A type of tool used for testing and debugging computer programs. Debugging is used to find defects within a program (bugs) and resolving issue they are causing. With debugging tools you can execute the program to a certain point or one line at a time, depending on how you want to examine it.
 
 Google Drive Tools
 A cloud-based file storage, that includes basic Office suite tools: Docs, Sheets, Slides, and others. It provides features for sharing and editing documents in collaboration with other Google Drive users, public and private or limited access. More features can be added via Add-ons.
@@ -151,11 +233,91 @@ See also: GNU, Linux
 Product Product Management
 A service or an item that is offered for sale. It may have different forms: virtual, cyber or physical.
 
-Testing QA
-Testing is defined as an activity to check whether the actual results match the expected results
+Product Management Product Management
+An organizational function that guides every step of a product lifecycle within a company and manages all the activities related to the development, marketing and selling a product.
+
+Growth Product Management
+The second Product Life Cycle stage. Characterized by a growth in sales, profits and revenues. The product becomes more recognizable and the number of customers increases.
+
+User Product Management
+A person that uses some product, service or machine.
+
+Customer Product Management
+A person that purchases products (services or goods) produced by a business.
+
+Statistics Data Science
+Statistics is a Mathematical Science pertaining to data collection, analysis, interpretation and presentation. Statistics can be used to derive meaningful insights from data by performing mathematical computations on it.
+
+Predictive Modeling Data Science
+The process of using data and statistical techniques to forecast future outcomes.
+
+Data Visualization Data Science
+Data visualization is the graphical representation of information and data. By using visual elements like charts, graphs, and maps, data visualization tools provide an accessible way to see and understand trends, outliers, and patterns in data.
+
+Mathematics Data Science
+Mathematics is the science of numbers and their operations, interrelations, combinations, generalizations, and abstractions and of space configurations and their structure, measurement, transformations, and generalizations.
+
+Computer vision Data Science
+Computer vision is a field of computer science that works on enabling computers to see, identify and process images in the same way that human vision does, and then provide appropriate output.
+
+See also: Artificial Intelligence
+
+Finance General Terms
+The management of money and other assets.
+
+See also: Financial analysis, Financial Risk
+
+Automation General Terms
+Automation is the technology by which a process or procedure is performed with minimal human assistance.
+
+Application Development General Terms
+Application development is the process of gathering business requirements, designing, prototyping, coding, testing and ongoing improvements and debugging of software.
+
+Mobile applications Mobile Dev.
+Mobile applications (also known as mobile apps) are software programs developed for mobile devices such as smartphones and tablets.
+
+See also: Mobile Developer
+
+Computer Science General Terms
+Computer Science is the study of computers and computational systems. Unlike electrical and computer engineers, computer scientists deal mostly with software and software systems; this includes their theory, design, development, and application.
+
+Team Management Leadership
+Team management is the ability of an individual or an organization to administer and coordinate a group of individuals to perform a task. Team management involves teamwork, communication, objective setting and performance appraisals.
+
+Requirements Gathering Project Management
+Requirements Gathering is the process of generating a list of requirements (functional, system, technical, etc.) from the various stakeholders (customers, users, vendors, IT staff, etc.) that will be used as the basis for the formal Requirements Definition.
 
 Compliance Leadership
 Compliance refers to following the relevant laws and regulations for your industry.
+
+Trading system General Terms
+A trading system is a set of rules or instructions that controls when to buy, and when to sell.
+
+PCB design General Terms
+Printed circuit board (PCB) design brings your electronic circuits to life in the physical form. Using layout software, the PCB design process combines component placement and routing to define electrical connectivity on a manufactured circuit board.
+
+Altium Designer General Terms
+Altium Designer is a PCB and electronic design automation software package for printed circuit boards.
+
+See also: PCB design
+
+Operations research General Terms
+Operations research (OR) is a discipline that deals with the application of advanced analytical methods to help make better decisions.
+
+EDA tools Tools
+Electronic design automation (EDA) is a category of software tools for designing electronic systems such as integrated circuits and printed circuit boards. The tools work together in a design flow that chip designers use to design and analyze entire semiconductor chips.
+
+Raspberry Pi General Terms
+The Raspberry Pi is a low cost, credit-card sized computer that plugs into a computer monitor or TV, and uses a standard keyboard and mouse.
+
+Authorization General Terms
+Authorization is a process by which a server determines if the client has permission to use a resource or access a file. Authorization is usually coupled with authentication so that the server has some concept of who the client is that is requesting access.
+
+Java Profiler Back-end
+A Java Profiler is a tool that monitors Java bytecode constructs and operations at the JVM level. These code constructs and operations include object creation, iterative executions (including recursive calls), method executions, thread executions, and garbage collections.
+
+Containerization DevOps
+Containerization is the process of packaging an application along with its required libraries, frameworks, and configuration files together so that it can be run in various computing environments efficiently. In simpler terms, containerization is the encapsulation of an application and its required environment.
 
 Classification Data Science
 The process of predicting the class of given data points. Classes are sometimes called as targets/ labels or categories. Classification predictive modeling is the task of approximating a mapping function (f) from input variables (X) to discrete output variables (y).
@@ -163,25 +325,29 @@ The process of predicting the class of given data points. Classes are sometimes 
 Software Development General Terms
 The process of conceiving, specifying, designing, programming, documenting, testing, and bug fixing involved in creating and maintaining applications, frameworks, or other software components.
 
-14% Back-end
-37
+6% Tools
+79
 terms
 Reset
 Reset all filters
- Software Architecture 8
- Back-end 5
- DevOps 4
- Front-end 4
- Programming Paradigms 2
- Tools 2
- Mobile Dev. 2
+ General Terms 16
+ Data Science 11
+ DevOps 7
+ Front-end 6
+ Product Management 5
+ Tools 5
+ Software Architecture 4
+ Back-end 4
+ QA 3
+ Embedded 3
+ Development Methodologies 2
+ Cloud Computing 2
+ Programming Concepts 2
  Databases 2
- General Terms 2
- Product Management 1
- Cloud Computing 1
- Programming Concepts 1
- QA 1
- Leadership 1
- Data Science 1
+ Web Design 2
+ Leadership 2
+ Mobile Dev. 1
+ Tech Roles 1
+ Project Management 1
 Hiring Software Engineers?
 Post your jobs on Relocate.me
