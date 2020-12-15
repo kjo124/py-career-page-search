@@ -2,25 +2,27 @@ import urllib.request
 from bs4 import BeautifulSoup
 import re
 
-url = "https://boards.greenhouse.io/paytronix/jobs/2332500?gh_src=0e280c641us"
-
-response = urllib.request.urlopen(url)
-html = response.read()
-soup = BeautifulSoup(html, 'html.parser')
-
-
 # to run: python3.9 /Users/kyleodin/Documents/GitHub/py-career-page-search/code/pagesearcher.py
 
-# Documentation of soup: https://www.crummy.com/software/BeautifulSoup/bs4/doc/
-# print(soup.get_text())
-# print(soup.prettify())
+urls = ["https://jobs.lever.co/boweryfarming/c0de7734-9fe3-4191-a1de-39f19d1a7579",
+        "https://boards.greenhouse.io/indigo/jobs/2404630", "https://boards.greenhouse.io/indigo/jobs/2249194"]
 
+outputFile = open("/Users/kyleodin/Documents/GitHub/py-career-page-search/files/output", "w+")
+
+for url in urls:
+    response = urllib.request.urlopen(url)
+    html = response.read()
+    # Documentation of soup: https://www.crummy.com/software/BeautifulSoup/bs4/doc/
+    soup = BeautifulSoup(html, 'html.parser')
+    outputFile.writelines(soup.get_text())
+    # print(soup.get_text())
+    # print(soup.prettify())
 
 # assign text to jobs
 # create full text of all jobs with only spaces between all terms
 # create html from full text of jobs
-file1 = open("/Users/kyleodin/Documents/GitHub/py-career-page-search/files/output", "w+")
-file1.writelines(soup.get_text())
+
+
 # open in online text editor in chrome
 # contrl-a and copy categoriesraw from filters tab
 # open glossary tab and control-a copy Glossary
@@ -93,6 +95,7 @@ for line in fileCounting:
     for term in termsList:
         termCopy = term.replace(" ", "")
         termCopy = termCopy.lower()
+        # TODO: Fix so an occurance of "BoweryOS" does not count as an occurance of "OS"
         if line.count(termCopy) > 0:
             count = line.count(termCopy) + termDict[term]
             termDict[term] = count
