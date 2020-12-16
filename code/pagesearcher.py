@@ -27,6 +27,7 @@ for url in urls:
 # contrl-a and copy categoriesraw from filters tab
 # open glossary tab and control-a copy Glossary
 # create a dicationary of terms
+# TODO: probably just make a big database here
 categoriesFile = open(
     "/Users/kyleodin/Documents/GitHub/py-career-page-search/files/categoriesraw", "r")
 categoriesList = []
@@ -90,15 +91,17 @@ fileCounting = open(
 # go through line by line, make the line and term lowercase striped of
 # whitespace and count the terms
 for line in fileCounting:
-    line = line.replace(" ", "")
-    line = line.lower()
     for term in termsList:
-        termCopy = term.replace(" ", "")
-        termCopy = termCopy.lower()
-        # TODO: Fix so an occurance of "BoweryOS" does not count as an occurance of "OS"
-        if line.count(termCopy) > 0:
-            count = line.count(termCopy) + termDict[term]
-            termDict[term] = count
+        c = 0
+        # TODO: Fix so an occurance of "Raspberry Pi," does not count as an occurance of "Raspberry Pi"
+
+        if term in line:
+            termCopy = " " + term + " "
+            c = line.count(termCopy)
+            if c > 0:
+                c += termDict[term]
+                termDict[term] = c
+
 # arange in assending order
 termDict = dict(sorted(termDict.items(), key=lambda item: item[1]))
 # remove last item
