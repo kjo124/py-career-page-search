@@ -14,6 +14,7 @@ for url in urls:
     html = response.read()
     # Documentation of soup: https://www.crummy.com/software/BeautifulSoup/bs4/doc/
     soup = BeautifulSoup(html, 'html.parser')
+    # TODO: try to trim down output file writing since a bunch of the website is being used
     outputFile.writelines(soup.get_text())
     # print(soup.get_text())
     # print(soup.prettify())
@@ -93,11 +94,11 @@ fileCounting = open(
 for line in fileCounting:
     for term in termsList:
         c = 0
-        # TODO: Fix so an occurance of "Raspberry Pi," does not count as an occurance of "Raspberry Pi"
-
-        if term in line:
-            termCopy = " " + term + " "
-            c = line.count(termCopy)
+        # Does a pretty good job at searching though the page
+        lineCopy = line.lower()
+        termCopy = term.lower()
+        if termCopy in lineCopy:
+            c = len(re.findall(rf"[^a-z]{re.escape(termCopy)}[^a-z]", lineCopy))
             if c > 0:
                 c += termDict[term]
                 termDict[term] = c
