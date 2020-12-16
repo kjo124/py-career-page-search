@@ -14,7 +14,6 @@ for url in urls:
     html = response.read()
     # Documentation of soup: https://www.crummy.com/software/BeautifulSoup/bs4/doc/
     soup = BeautifulSoup(html, 'html.parser')
-    # TODO: try to trim down output file writing since a bunch of the website is being used
     outputFile.writelines(soup.get_text())
     # print(soup.get_text())
     # print(soup.prettify())
