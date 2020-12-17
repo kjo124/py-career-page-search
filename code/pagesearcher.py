@@ -1,6 +1,26 @@
 import urllib.request
 from bs4 import BeautifulSoup
 import re
+import mysql.connector
+
+mySQLpasswordFile = open(
+    "/Users/kyleodin/Documents/GitHub/py-career-page-search/MySQLpassword.txt", "r")
+
+mySQLpassword = mySQLpasswordFile.readline().rstrip()
+
+db = mysql.connector.connect(
+    host="localhost",
+    user="root",
+    password=mySQLpassword,
+    database='pyCareerPageSearch'
+
+)
+
+cursor = db.cursor()
+# ran this once: cursor.execute("CREATE DATABASE pyCareerPageSearch")
+
+# TODO: write create table for jobs (jobURL, jobHTMLoutputfile, companyName?, jobTitle?)
+
 
 # to run: python3.9 /Users/kyleodin/Documents/GitHub/py-career-page-search/code/pagesearcher.py
 
@@ -27,6 +47,7 @@ for url in urls:
 # contrl-a and copy categoriesraw from filters tab
 # open glossary tab and control-a copy Glossary
 # create a dicationary of terms
+# TODO: probably just make a big database here
 categoriesFile = open(
     "/Users/kyleodin/Documents/GitHub/py-career-page-search/files/categoriesraw", "r")
 categoriesList = []
@@ -90,19 +111,21 @@ fileCounting = open(
 # go through line by line, make the line and term lowercase striped of
 # whitespace and count the terms
 for line in fileCounting:
-    line = line.replace(" ", "")
-    line = line.lower()
     for term in termsList:
-        termCopy = term.replace(" ", "")
-        termCopy = termCopy.lower()
-        # TODO: Fix so an occurance of "BoweryOS" does not count as an occurance of "OS"
-        if line.count(termCopy) > 0:
-            count = line.count(termCopy) + termDict[term]
-            termDict[term] = count
+        c = 0
+        # Does a pretty good job at searching though the page
+        lineCopy = line.lower()
+        termCopy = term.lower()
+        if termCopy in lineCopy:
+            c = len(re.findall(rf"[^a-z]{re.escape(termCopy)}[^a-z]", lineCopy))
+            if c > 0:
+                c += termDict[term]
+                termDict[term] = c
+
 # arange in assending order
 termDict = dict(sorted(termDict.items(), key=lambda item: item[1]))
 # remove last item
 termDict.pop("")
-print(termDict)
+# print(termDict)
 # assign terms to jobs
 # evaluate for to long terms goals to inprove on
