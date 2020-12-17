@@ -1,6 +1,26 @@
 import urllib.request
 from bs4 import BeautifulSoup
 import re
+import mysql.connector
+
+mySQLpasswordFile = open(
+    "/Users/kyleodin/Documents/GitHub/py-career-page-search/MySQLpassword.txt", "r")
+
+mySQLpassword = mySQLpasswordFile.readline().rstrip()
+
+db = mysql.connector.connect(
+    host="localhost",
+    user="root",
+    password=mySQLpassword,
+    database='pyCareerPageSearch'
+
+)
+
+cursor = db.cursor()
+# ran this once: cursor.execute("CREATE DATABASE pyCareerPageSearch")
+
+# TODO: write create table for jobs (jobURL, jobHTMLoutputfile, companyName?, jobTitle?)
+
 
 # to run: python3.9 /Users/kyleodin/Documents/GitHub/py-career-page-search/code/pagesearcher.py
 
@@ -106,6 +126,6 @@ for line in fileCounting:
 termDict = dict(sorted(termDict.items(), key=lambda item: item[1]))
 # remove last item
 termDict.pop("")
-print(termDict)
+# print(termDict)
 # assign terms to jobs
 # evaluate for to long terms goals to inprove on
