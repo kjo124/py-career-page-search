@@ -17,9 +17,14 @@ db = mysql.connector.connect(
 )
 
 cursor = db.cursor()
-# ran this once: cursor.execute("CREATE DATABASE pyCareerPageSearch")
 
-# TODO: write create table for jobs (jobURL, jobHTMLoutputfile, companyName?, jobTitle?)
+
+# ran these:
+# cursor.execute("CREATE DATABASE pyCareerPageSearch")
+# cursor.execute( "CREATE TABLE jobs (jobURL VARCHAR(255) PRIMARY KEY, jobHTMLoutputfile VARCHAR(255))")
+# cursor.execute("SHOW TABLES")
+# for x in cursor:
+#    print(x)
 
 
 # to run: python3.9 /Users/kyleodin/Documents/GitHub/py-career-page-search/code/pagesearcher.py
@@ -27,16 +32,29 @@ cursor = db.cursor()
 urls = ["https://jobs.lever.co/boweryfarming/c0de7734-9fe3-4191-a1de-39f19d1a7579",
         "https://boards.greenhouse.io/indigo/jobs/2404630", "https://boards.greenhouse.io/indigo/jobs/2249194"]
 
-outputFile = open("/Users/kyleodin/Documents/GitHub/py-career-page-search/files/output", "w+")
+outputFile = open("/Users/kyleodin/Documents/GitHub/py-career-page-search/files/output", "a+")
 
 for url in urls:
-    response = urllib.request.urlopen(url)
-    html = response.read()
-    # Documentation of soup: https://www.crummy.com/software/BeautifulSoup/bs4/doc/
-    soup = BeautifulSoup(html, 'html.parser')
-    outputFile.writelines(soup.get_text())
-    # print(soup.get_text())
-    # print(soup.prettify())
+    sql = "SELECT * FROM jobs WHERE jobURL ='" + url + "'"
+    cursor.execute(sql)
+    result = cursor.fetchall()
+    if len(result) > 0:
+        print("THIS IS IN THE TABLE")
+    else:
+        # TODO:
+        # add new entery to table
+        # output html to filters
+        # amend output file with soup.get_text()
+
+        # old code:
+        # response = urllib.request.urlopen(url)
+        # html = response.read()
+        # Documentation of soup: https://www.crummy.com/software/BeautifulSoup/bs4/doc/
+        # soup = BeautifulSoup(html, 'html.parser')
+        # outputFile.writelines(soup.get_text())
+        # print(soup.get_text())
+        # print(soup.prettify())
+        pass
 
 # assign text to jobs
 # create full text of all jobs with only spaces between all terms
