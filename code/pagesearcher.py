@@ -17,37 +17,68 @@ db = mysql.connector.connect(
 )
 
 cursor = db.cursor()
-# ran this once: cursor.execute("CREATE DATABASE pyCareerPageSearch")
 
-# TODO: write create table for jobs (jobURL, jobHTMLoutputfile, companyName?, jobTitle?)
+
+# ran these:
+# cursor.execute("CREATE DATABASE pyCareerPageSearch")
+# cursor.execute( "CREATE TABLE jobs (jobURL VARCHAR(255) PRIMARY KEY, jobHTMLoutputfile VARCHAR(255))")
+# cursor.execute("SHOW TABLES")
+# for x in cursor:
+#    print(x)
 
 
 # to run: python3.9 /Users/kyleodin/Documents/GitHub/py-career-page-search/code/pagesearcher.py
-
-urls = ["https://jobs.lever.co/boweryfarming/c0de7734-9fe3-4191-a1de-39f19d1a7579",
-        "https://boards.greenhouse.io/indigo/jobs/2404630", "https://boards.greenhouse.io/indigo/jobs/2249194"]
-
-outputFile = open("/Users/kyleodin/Documents/GitHub/py-career-page-search/files/output", "w+")
-
-for url in urls:
-    response = urllib.request.urlopen(url)
-    html = response.read()
-    # Documentation of soup: https://www.crummy.com/software/BeautifulSoup/bs4/doc/
-    soup = BeautifulSoup(html, 'html.parser')
-    outputFile.writelines(soup.get_text())
-    # print(soup.get_text())
-    # print(soup.prettify())
-
-# assign text to jobs
-# create full text of all jobs with only spaces between all terms
-# create html from full text of jobs
-
-
-# open in online text editor in chrome
+# after running:
+# output file will need to be open in online text editor in Chrome
+# open GlossaryTech pugin
 # contrl-a and copy categoriesraw from filters tab
 # open glossary tab and control-a copy Glossary
-# create a dicationary of terms
-# TODO: probably just make a big database here
+# rerun program
+
+urlsFile = open(
+    "/Users/kyleodin/Documents/GitHub/py-career-page-search/files/urls", "r")
+urls = []
+for line in urlsFile:
+    # print(line.rstrip())
+    urls.append(line.rstrip())
+
+
+outputFile = open("/Users/kyleodin/Documents/GitHub/py-career-page-search/files/output", "a+")
+
+for url in urls:
+    sql = "SELECT * FROM jobs WHERE jobURL ='" + url + "'"
+    cursor.execute(sql)
+    result = cursor.fetchall()
+    if len(result) > 0:
+        print("THIS IS IN THE TABLE")
+    else:
+        # add new entery to table
+        sql = "INSERT INTO jobs (jobURL, jobHTMLoutputfile) VALUES (%s, %s)"
+        id = url.replace('/', '.')
+        htmlFileName = id + ".html"
+        val = (url, htmlFileName)
+        cursor.execute(sql, val)
+        # output html to files
+        htmlOutputFile = open(
+            "/Users/kyleodin/Documents/GitHub/py-career-page-search/savedHTML/%s" % htmlFileName, "w+")
+        response = urllib.request.urlopen(url)
+        html = response.read()
+        # Documentation of soup: https://www.crummy.com/software/BeautifulSoup/bs4/doc/
+        soup = BeautifulSoup(html, 'html.parser')
+        # html to files
+        htmlOutputFile.writelines(soup.prettify())
+        # amend output file with soup.get_text()
+        # create plaintext from full text of jobs
+        outputFile.writelines(soup.get_text())
+
+# jobs table has been created, its has jobURLs and jobHTMLoutputfile names
+# cursor.execute("SELECT * FROM jobs")
+# result = cursor.fetchall()
+# for x in result:
+#    print(x)
+
+
+# TODO: create the category database, it has contains categories (key)
 categoriesFile = open(
     "/Users/kyleodin/Documents/GitHub/py-career-page-search/files/categoriesraw", "r")
 categoriesList = []
@@ -66,8 +97,11 @@ for line in categoriesFile:
     if line == "Reset all filters\n":
         readyForCategories = 1
 
+# categoryList has been created, use this to search for and remove
+# terms in glossary file
 # print(categoriesList)
 
+# TODO: create the terms database, it has categories and terms (key)
 termsFile = open(
     "/Users/kyleodin/Documents/GitHub/py-career-page-search/files/glossary", "r")
 termsList = []
@@ -91,6 +125,7 @@ for line in termsFile:
             terms = terms[:-1]
             termsList.append(terms)
             # maybe just create a database of each of these
+        # TODO: refine this number
         if len(line) > 83:
             pass  # glossary of term, do nothing
     if line == "Glossary\n":
@@ -98,6 +133,7 @@ for line in termsFile:
 
 # print(termsList)
 
+# TODO: create the wordCount database, it has (key) terms, categories, and counts
 # go back to fill text file and count all terms from dicationary
 # create dictionary
 termDict = {}
@@ -121,11 +157,14 @@ for line in fileCounting:
             if c > 0:
                 c += termDict[term]
                 termDict[term] = c
-
+# TODO: create a method that takes in a plaintext file, a category #
+# array, a term array, and returns an array of terms and counts
+# TODO: Create a database with Jobs, terms, counts, percentOfTotalCount # and limit by top 5 terms
+# TODO: Print wordCount output decending by counts and remove 0 counts
 # arange in assending order
 termDict = dict(sorted(termDict.items(), key=lambda item: item[1]))
 # remove last item
 termDict.pop("")
-# print(termDict)
+print(termDict)
 # assign terms to jobs
 # evaluate for to long terms goals to inprove on
