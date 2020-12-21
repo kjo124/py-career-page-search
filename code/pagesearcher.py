@@ -41,20 +41,29 @@ for url in urls:
     if len(result) > 0:
         print("THIS IS IN THE TABLE")
     else:
-        # TODO:
         # add new entery to table
-        # output html to filters
-        # amend output file with soup.get_text()
-
-        # old code:
-        # response = urllib.request.urlopen(url)
-        # html = response.read()
+        sql = "INSERT INTO jobs (jobURL, jobHTMLoutputfile) VALUES (%s, %s)"
+        id = url.replace('/', '.')
+        htmlFileName = id + ".html"
+        val = (url, htmlFileName)
+        cursor.execute(sql, val)
+        # output html to files
+        htmlOutputFile = open(
+            "/Users/kyleodin/Documents/GitHub/py-career-page-search/savedHTML/%s" % htmlFileName, "w+")
+        response = urllib.request.urlopen(url)
+        html = response.read()
         # Documentation of soup: https://www.crummy.com/software/BeautifulSoup/bs4/doc/
-        # soup = BeautifulSoup(html, 'html.parser')
-        # outputFile.writelines(soup.get_text())
-        # print(soup.get_text())
-        # print(soup.prettify())
-        pass
+        soup = BeautifulSoup(html, 'html.parser')
+        # html to files
+        htmlOutputFile.writelines(soup.prettify())
+        # amend output file with soup.get_text()
+        outputFile.writelines(soup.get_text())
+
+
+# cursor.execute("SELECT * FROM jobs")
+# result = cursor.fetchall()
+# for x in result:
+#    print(x)
 
 # assign text to jobs
 # create full text of all jobs with only spaces between all terms
