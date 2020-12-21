@@ -28,9 +28,13 @@ cursor = db.cursor()
 
 
 # to run: python3.9 /Users/kyleodin/Documents/GitHub/py-career-page-search/code/pagesearcher.py
+urlsFile = open(
+    "/Users/kyleodin/Documents/GitHub/py-career-page-search/files/urls", "r")
+urls = []
+for line in urlsFile:
+    print(line.rstrip())
+    urls.append(line.rstrip())
 
-urls = ["https://jobs.lever.co/boweryfarming/c0de7734-9fe3-4191-a1de-39f19d1a7579",
-        "https://boards.greenhouse.io/indigo/jobs/2404630", "https://boards.greenhouse.io/indigo/jobs/2249194"]
 
 outputFile = open("/Users/kyleodin/Documents/GitHub/py-career-page-search/files/output", "a+")
 
