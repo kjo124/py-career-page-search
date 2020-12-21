@@ -28,11 +28,18 @@ cursor = db.cursor()
 
 
 # to run: python3.9 /Users/kyleodin/Documents/GitHub/py-career-page-search/code/pagesearcher.py
+# after running:
+# output file will need to be open in online text editor in Chrome
+# open GlossaryTech pugin
+# contrl-a and copy categoriesraw from filters tab
+# open glossary tab and control-a copy Glossary
+# rerun program
+
 urlsFile = open(
     "/Users/kyleodin/Documents/GitHub/py-career-page-search/files/urls", "r")
 urls = []
 for line in urlsFile:
-    print(line.rstrip())
+    # print(line.rstrip())
     urls.append(line.rstrip())
 
 
@@ -61,24 +68,17 @@ for url in urls:
         # html to files
         htmlOutputFile.writelines(soup.prettify())
         # amend output file with soup.get_text()
+        # create plaintext from full text of jobs
         outputFile.writelines(soup.get_text())
 
-
+# jobs table has been created, its has jobURLs and jobHTMLoutputfile names
 # cursor.execute("SELECT * FROM jobs")
 # result = cursor.fetchall()
 # for x in result:
 #    print(x)
 
-# assign text to jobs
-# create full text of all jobs with only spaces between all terms
-# create html from full text of jobs
 
-
-# open in online text editor in chrome
-# contrl-a and copy categoriesraw from filters tab
-# open glossary tab and control-a copy Glossary
-# create a dicationary of terms
-# TODO: probably just make a big database here
+# TODO: create the category database, it has contains categories (key)
 categoriesFile = open(
     "/Users/kyleodin/Documents/GitHub/py-career-page-search/files/categoriesraw", "r")
 categoriesList = []
@@ -97,8 +97,11 @@ for line in categoriesFile:
     if line == "Reset all filters\n":
         readyForCategories = 1
 
+# categoryList has been created, use this to search for and remove
+# terms in glossary file
 # print(categoriesList)
 
+# TODO: create the terms database, it has categories and terms (key)
 termsFile = open(
     "/Users/kyleodin/Documents/GitHub/py-career-page-search/files/glossary", "r")
 termsList = []
@@ -122,6 +125,7 @@ for line in termsFile:
             terms = terms[:-1]
             termsList.append(terms)
             # maybe just create a database of each of these
+        # TODO: refine this number
         if len(line) > 83:
             pass  # glossary of term, do nothing
     if line == "Glossary\n":
@@ -129,6 +133,7 @@ for line in termsFile:
 
 # print(termsList)
 
+# TODO: create the wordCount database, it has (key) terms, categories, and counts
 # go back to fill text file and count all terms from dicationary
 # create dictionary
 termDict = {}
@@ -152,11 +157,14 @@ for line in fileCounting:
             if c > 0:
                 c += termDict[term]
                 termDict[term] = c
-
+# TODO: create a method that takes in a plaintext file, a category #
+# array, a term array, and returns an array of terms and counts
+# TODO: Create a database with Jobs, terms, counts, percentOfTotalCount # and limit by top 5 terms
+# TODO: Print wordCount output decending by counts and remove 0 counts
 # arange in assending order
 termDict = dict(sorted(termDict.items(), key=lambda item: item[1]))
 # remove last item
 termDict.pop("")
-# print(termDict)
+print(termDict)
 # assign terms to jobs
 # evaluate for to long terms goals to inprove on
