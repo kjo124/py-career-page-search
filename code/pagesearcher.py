@@ -51,6 +51,7 @@ for url in urls:
     result = cursor.fetchall()
     if len(result) > 0:
         print("THIS IS IN THE TABLE")
+        pass
     else:
         # add new entery to table
         sql = "INSERT INTO jobs (jobURL, jobHTMLoutputfile) VALUES (%s, %s)"
@@ -78,7 +79,6 @@ for url in urls:
 #    print(x)
 
 
-# TODO: create the category database, it has contains categories (key)
 categoriesFile = open(
     "/Users/kyleodin/Documents/GitHub/py-career-page-search/files/categoriesraw", "r")
 categoriesList = []
@@ -102,6 +102,8 @@ for line in categoriesFile:
 # print(categoriesList)
 
 # TODO: create the terms database, it has categories and terms (key)
+# TODO: Run this:
+# cursor.execute( "CREATE TABLE terms (term VARCHAR(255) PRIMARY KEY, category VARCHAR(255))")
 termsFile = open(
     "/Users/kyleodin/Documents/GitHub/py-career-page-search/files/glossary", "r")
 termsList = []
@@ -122,8 +124,22 @@ for line in termsFile:
             for category in categoriesList:
                 regex = re.compile(category)
                 terms = regex.sub('', terms)
-            terms = terms[:-1]
-            termsList.append(terms)
+                # TODO: when term changes length and is > 0
+                #    terms = terms[:-1]
+                #    termsList.append(terms)
+                # TODO: Modify and use this code to add term and category to terms database
+                # sql = "SELECT category FROM categories WHERE category ='" + category + "'"
+                # cursor.execute(sql)
+                # result = cursor.fetchall()
+                # if len(result) > 0:
+                #    print("THIS IS IN THE CATEGORY TABLE")
+                #    pass
+                # else:
+                #    print("ADDING NEW CATAGORY")
+                #    sql = """INSERT INTO categories (category)
+                #          VALUE ('%s')""" % (category)
+                #    cursor.execute(sql)
+                #    print(sql)
             # maybe just create a database of each of these
         # TODO: refine this number
         if len(line) > 83:
