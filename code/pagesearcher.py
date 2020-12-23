@@ -101,12 +101,16 @@ for line in categoriesFile:
 # terms in glossary file
 # print(categoriesList)
 
-# TODO: create the terms database, it has categories and terms (key)
-# TODO: Run this:
-# cursor.execute( "CREATE TABLE terms (term VARCHAR(255) PRIMARY KEY, category VARCHAR(255))")
+# create the terms database, it has categories and terms (key)
+# Run this:
+# cursor.execute("CREATE TABLE terms (term VARCHAR(255) PRIMARY KEY, category VARCHAR(255))")
 termsFile = open(
     "/Users/kyleodin/Documents/GitHub/py-career-page-search/files/glossary", "r")
 termsList = []
+
+cursor.execute("SHOW TABLES")
+for x in cursor:
+    print(x)
 
 readyForterms = 0
 for line in termsFile:
@@ -122,25 +126,32 @@ for line in termsFile:
             terms = terms[:-1]
             # remove category from line
             for category in categoriesList:
+                termLengthCheck = len(terms)
                 regex = re.compile(category)
                 terms = regex.sub('', terms)
-                # TODO: when term changes length and is > 0
-                #    terms = terms[:-1]
-                #    termsList.append(terms)
-                # TODO: Modify and use this code to add term and category to terms database
-                # sql = "SELECT category FROM categories WHERE category ='" + category + "'"
-                # cursor.execute(sql)
-                # result = cursor.fetchall()
-                # if len(result) > 0:
-                #    print("THIS IS IN THE CATEGORY TABLE")
-                #    pass
-                # else:
-                #    print("ADDING NEW CATAGORY")
-                #    sql = """INSERT INTO categories (category)
-                #          VALUE ('%s')""" % (category)
-                #    cursor.execute(sql)
-                #    print(sql)
-            # maybe just create a database of each of these
+                # when term changes length and is > 0
+                if len(terms) != termLengthCheck:
+                    terms = terms[:-1]
+                    if len(terms) == 0:
+                        terms = category
+                    termsList.append(terms)
+                    # Add term and category to terms database
+                    sql = "SELECT * FROM terms WHERE term ='" + terms + "'"
+                    print(sql)
+                    print(terms)
+                    cursor.execute(sql)
+                    result = cursor.fetchall()
+                    if len(result) > 0:
+                        print("THIS IS IN THE TERM TABLE")
+                        pass
+                    else:
+                        # TODO: terms are not staying in the table for some reason
+                        print("ADDING NEW TERM")
+                        sql = "INSERT INTO terms (term, category) VALUES (%s,%s)"
+                        val = (terms, category)
+                        print(sql)
+                        cursor.execute(sql, val)
+
         # TODO: refine this number
         if len(line) > 83:
             pass  # glossary of term, do nothing
@@ -148,7 +159,10 @@ for line in termsFile:
         readyForterms = 1
 
 # print(termsList)
-
+cursor.execute("SELECT * FROM terms")
+result = cursor.fetchall()
+for x in result:
+    print(x)
 # TODO: create the wordCount database, it has (key) terms, categories, and counts
 # go back to fill text file and count all terms from dicationary
 # create dictionary
@@ -180,7 +194,6 @@ for line in fileCounting:
 # arange in assending order
 termDict = dict(sorted(termDict.items(), key=lambda item: item[1]))
 # remove last item
-termDict.pop("")
 print(termDict)
 # assign terms to jobs
 # evaluate for to long terms goals to inprove on
