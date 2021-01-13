@@ -137,13 +137,10 @@ for line in termsFile:
                     termsList.append(terms)
                     # Add term and category to terms database
                     sql = "SELECT * FROM terms WHERE term ='" + terms + "'"
-                    print(sql)
-                    print(terms)
                     cursor.execute(sql)
                     result = cursor.fetchall()
                     if len(result) > 0:
                         print("THIS IS IN THE TERM TABLE")
-                        pass
                     else:
                         # TODO: terms are not staying in the table for some reason
                         print("ADDING NEW TERM")
@@ -151,6 +148,7 @@ for line in termsFile:
                         val = (terms, category)
                         print(sql)
                         cursor.execute(sql, val)
+                        db.commit()
 
         # TODO: refine this number
         if len(line) > 83:
