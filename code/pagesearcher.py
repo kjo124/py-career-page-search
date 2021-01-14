@@ -45,6 +45,9 @@ for line in urlsFile:
 
 outputFile = open("/Users/kyleodin/Documents/GitHub/py-career-page-search/files/output", "a+")
 
+# TODO split up HTML saving function from this
+# TODO: Save a career page and all children pages
+# TODO: make /files/output take in a directory of HTML files
 for url in urls:
     sql = "SELECT * FROM jobs WHERE jobURL ='" + url + "'"
     cursor.execute(sql)
@@ -104,15 +107,17 @@ for line in categoriesFile:
 # create the terms database, it has categories and terms (key)
 # Run this:
 # cursor.execute("CREATE TABLE terms (term VARCHAR(255) PRIMARY KEY, category VARCHAR(255))")
+
 termsFile = open(
     "/Users/kyleodin/Documents/GitHub/py-career-page-search/files/glossary", "r")
-termsList = []
 
-cursor.execute("SHOW TABLES")
-for x in cursor:
-    print(x)
+# cursor.execute("SHOW TABLES")
+# for x in cursor:
+#    print(x)
+
 
 readyForterms = 0
+# TODO: do this only if termsFile has changed
 for line in termsFile:
     if "%" in line:  # end of file
         break
@@ -134,7 +139,6 @@ for line in termsFile:
                     terms = terms[:-1]
                     if len(terms) == 0:
                         terms = category
-                    termsList.append(terms)
                     # Add term and category to terms database
                     sql = "SELECT * FROM terms WHERE term ='" + terms + "'"
                     cursor.execute(sql)
@@ -142,12 +146,12 @@ for line in termsFile:
                     if len(result) > 0:
                         print("THIS IS IN THE TERM TABLE")
                     else:
-                        # TODO: terms are not staying in the table for some reason
                         print("ADDING NEW TERM")
                         sql = "INSERT INTO terms (term, category) VALUES (%s,%s)"
                         val = (terms, category)
                         print(sql)
                         cursor.execute(sql, val)
+                        # commit to db
                         db.commit()
 
         # TODO: refine this number
@@ -156,16 +160,22 @@ for line in termsFile:
     if line == "Glossary\n":
         readyForterms = 1
 
-# print(termsList)
-cursor.execute("SELECT * FROM terms")
+# cursor.execute("SELECT * FROM terms")
+# result = cursor.fetchall()
+# for x in result:
+#    print(x)
+
+cursor.execute("SELECT term FROM terms")
 result = cursor.fetchall()
+termsList = []
+# construct termsList from result
 for x in result:
-    print(x)
-# TODO: create the wordCount database, it has (key) terms, categories, and counts
+    termsList.append(x[0])
+
+# TODO NEXT: create the wordCount database, it has (key) terms, categories, and counts
 # go back to fill text file and count all terms from dicationary
 # create dictionary
 termDict = {}
-
 for term in termsList:
     termDict[term] = 0
 
@@ -174,6 +184,7 @@ fileCounting = open(
 
 # go through line by line, make the line and term lowercase striped of
 # whitespace and count the terms
+# TODO: do this only if fileCounting has changed
 for line in fileCounting:
     for term in termsList:
         c = 0
