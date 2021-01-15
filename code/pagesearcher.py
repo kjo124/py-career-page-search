@@ -16,8 +16,8 @@ db = mysql.connector.connect(
 
 )
 
-cursor = db.cursor()
-
+# https://stackoverflow.com/a/33632767
+cursor = db.cursor(buffered=True)
 
 # ran these:
 # cursor.execute("CREATE DATABASE pyCareerPageSearch")
@@ -172,7 +172,9 @@ termsList = []
 for x in result:
     termsList.append(x[0])
 
-# TODO NEXT: create the wordCount database, it has (key) terms, categories, and counts
+# TODO: create the termCounts database, it has (key) terms, categories, and counts
+# ran these:
+# cursor.execute("CREATE TABLE termCounts (term VARCHAR(255) PRIMARY KEY, count INT)")
 # go back to fill text file and count all terms from dicationary
 # create dictionary
 termDict = {}
@@ -196,6 +198,23 @@ for line in fileCounting:
             if c > 0:
                 c += termDict[term]
                 termDict[term] = c
+
+# TODO: reset term counts to 0 in table
+for term in termsList:
+    count = termDict[term]
+    # cursor.execute("INSERT INTO termCounts VALUES (%s, %s)", (term, int(count)))
+    sql = "UPDATE termCounts SET count = " + count + " WHERE term = " + term
+    # TODO NEXT: fix error TypeError: can only concatenate str (not "int") to str
+    print(sql)
+    cursor.execute(sql)
+
+
+db.commit()
+
+# cursor.execute("SELECT * FROM terms")
+# result = cursor.fetchall()
+# for x in result:
+#    print(x)
 # TODO: create a method that takes in a plaintext file, a category #
 # array, a term array, and returns an array of terms and counts
 # TODO: Create a database with Jobs, terms, counts, percentOfTotalCount # and limit by top 5 terms
