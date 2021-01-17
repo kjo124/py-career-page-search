@@ -34,13 +34,40 @@ cursor = db.cursor(buffered=True)
 # open glossary tab and control-a copy Glossary
 # rerun program
 
-def getJobs(careerPageURL):
+def getURLsFromPage(careerPageURL):
+    unrefinedURLS = []
     url = careerPageURL
     response = urllib.request.urlopen(url)
     html = response.read()
     soup = BeautifulSoup(html, 'html.parser')
     for link in soup.find_all('a'):
-        print(link.get('href'))
+        if "http" in str(link.get('href')):
+            if not "//www.greenhouse.io/" in str(link.get('href')):
+                print(link.get('href'))
+                unrefinedURLS.append(str(link.get('href')))
+    return unrefinedURLS
+
+
+def filterJobsOnUI(unrefinedURLS):
+    baseURL = input("Enter baseURL: ")
+    matching = [s for s in unrefinedURLS if baseURL in s]
+    return matching
+
+
+def saveURLs(jobURLs):
+    for url in jobURLs:
+        fileName = url.replace('/', '.')
+        htmlFileName = fileName + ".html"
+        # output html to files
+        # TODO: Make this save to a company directory
+        htmlOutputFile = open(
+            "/Users/kyleodin/Documents/GitHub/py-career-page-search/Test/%s" % htmlFileName, "w+")
+        response = urllib.request.urlopen(url)
+        html = response.read()
+        # Documentation of soup: https://www.crummy.com/software/BeautifulSoup/bs4/doc/
+        soup = BeautifulSoup(html, 'html.parser')
+        # html to files
+        htmlOutputFile.writelines(soup.prettify())
 
 
 urlsFile = open(
@@ -48,13 +75,17 @@ urlsFile = open(
 urls = []
 for line in urlsFile:
     # print(line.rstrip())
-    urls.append(line.rstrip())
+    # use "# " to comment out URLs
+    if not "# " in line.rstrip():
+        urls.append(line.rstrip())
+        print(line.rstrip())
 
 
 # outputFile = open("/Users/kyleodin/Documents/GitHub/py-career-page-search/files/output", "a+")
 
-# TODO split up HTML saving function from this
-# TODO: Save a career page and all children pages
-# TODO: make /files/output take in a directory of HTML files
+
 for url in urls:
-    getJobs(url)
+    unrefinedURLS = getURLsFromPage(url)
+    jobURLs = filterJobsOnUI(unrefinedURLS)
+    jobURLs.append(url)
+    saveURLs(jobURLs)
