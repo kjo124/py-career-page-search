@@ -16,8 +16,8 @@ db = mysql.connector.connect(
 
 )
 
-cursor = db.cursor()
-
+# https://stackoverflow.com/a/33632767
+cursor = db.cursor(buffered=True)
 
 # ran these:
 # cursor.execute("CREATE DATABASE pyCareerPageSearch")
@@ -137,6 +137,8 @@ for line in termsFile:
                 # when term changes length and is > 0
                 if len(terms) != termLengthCheck:
                     terms = terms[:-1]
+                    # remove spaces
+                    terms = str.strip(terms)
                     if len(terms) == 0:
                         terms = category
                     # Add term and category to terms database
@@ -172,7 +174,9 @@ termsList = []
 for x in result:
     termsList.append(x[0])
 
-# TODO NEXT: create the wordCount database, it has (key) terms, categories, and counts
+# TODO: create the termCounts database, it has (key) terms, categories, and counts
+# ran these:
+# cursor.execute("CREATE TABLE termCounts (term VARCHAR(255) PRIMARY KEY, count INT)")
 # go back to fill text file and count all terms from dicationary
 # create dictionary
 termDict = {}
@@ -196,13 +200,25 @@ for line in fileCounting:
             if c > 0:
                 c += termDict[term]
                 termDict[term] = c
-# TODO: create a method that takes in a plaintext file, a category #
-# array, a term array, and returns an array of terms and counts
+
+
 # TODO: Create a database with Jobs, terms, counts, percentOfTotalCount # and limit by top 5 terms
-# TODO: Print wordCount output decending by counts and remove 0 counts
-# arange in assending order
-termDict = dict(sorted(termDict.items(), key=lambda item: item[1]))
-# remove last item
-print(termDict)
-# assign terms to jobs
+for term in termsList:
+    count = termDict[term]
+    # cursor.execute("INSERT INTO termCounts VALUES (%s, %s)", (term, int(count)))
+    sql = "UPDATE termCounts SET count = " + str(count) + " WHERE term = '" + term + "'"
+    print(sql)
+    cursor.execute(sql)
+
+
+db.commit()
+
+# arange in decending order and remove 0 counts
+cursor.execute("SELECT * FROM termCounts WHERE count > 0 ORDER BY count DESC")
+result = cursor.fetchall()
+for x in result:
+    print(x)
+
+
+# TOD0: assign terms to jobs
 # evaluate for to long terms goals to inprove on
