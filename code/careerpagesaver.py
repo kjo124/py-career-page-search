@@ -1,6 +1,8 @@
 import urllib.request
 from bs4 import BeautifulSoup
 import mysql.connector
+from pathlib import Path
+import re
 
 mySQLpasswordFile = open(
     "/Users/kyleodin/Documents/GitHub/py-career-page-search/MySQLpassword.txt", "r")
@@ -54,18 +56,28 @@ def filterJobsOnUI(unrefinedURLS):
     return matching
 
 
-def saveURLs(jobURLs):
+def saveURLs(jobURLs, companyName):
+    # create companyName directory
+    path = "/Users/kyleodin/Documents/GitHub/py-career-page-search/savedHTML/" + companyName + "/"
+    Path(path).mkdir(parents=True, exist_ok=True)
     for url in jobURLs:
-        fileName = url.replace('/', '.')
-        htmlFileName = fileName + ".html"
+
         # output html to files
         # TODO: Make this save to a company directory
-        htmlOutputFile = open(
-            "/Users/kyleodin/Documents/GitHub/py-career-page-search/Test/%s" % htmlFileName, "w+")
+
         response = urllib.request.urlopen(url)
         html = response.read()
         # Documentation of soup: https://www.crummy.com/software/BeautifulSoup/bs4/doc/
         soup = BeautifulSoup(html, 'html.parser')
+        # save file as Title
+        fileName = soup.title.string
+        # remove / from file name
+        fileName = re.sub('/', '', fileName)
+        fileName = fileName + ".html"
+        print(fileName)
+        htmlFileName = path + fileName
+        htmlOutputFile = open(
+            htmlFileName, "w+")
         # html to files
         htmlOutputFile.writelines(soup.prettify())
 
@@ -81,11 +93,11 @@ for line in urlsFile:
         print(line.rstrip())
 
 
-# outputFile = open("/Users/kyleodin/Documents/GitHub/py-career-page-search/files/output", "a+")
-
-
 for url in urls:
+    # get company name
+    companyName = url.split("/")
+    companyName = companyName[2]
     unrefinedURLS = getURLsFromPage(url)
     jobURLs = filterJobsOnUI(unrefinedURLS)
     jobURLs.append(url)
-    saveURLs(jobURLs)
+    saveURLs(jobURLs, companyName)
