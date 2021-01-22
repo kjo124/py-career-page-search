@@ -44,9 +44,8 @@ def getURLsFromPage(careerPageURL):
     soup = BeautifulSoup(html, 'html.parser')
     for link in soup.find_all('a'):
         if "http" in str(link.get('href')):
-            if not "//www.greenhouse.io/" in str(link.get('href')):
-                print(link.get('href'))
-                unrefinedURLS.append(str(link.get('href')))
+            print(link.get('href'))
+            unrefinedURLS.append(str(link.get('href')))
     return unrefinedURLS
 
 
@@ -60,7 +59,7 @@ def saveURLs(jobURLs, companyName):
     # create companyName directory
     path = "/Users/kyleodin/Documents/GitHub/py-career-page-search/savedHTML/" + companyName + "/"
     Path(path).mkdir(parents=True, exist_ok=True)
-    for url in jobURLs:
+    for url in jobURLs[:-1]:
 
         # output html to files
         # TODO: Make this save to a company directory
@@ -80,6 +79,22 @@ def saveURLs(jobURLs, companyName):
             htmlFileName, "w+")
         # html to files
         htmlOutputFile.writelines(soup.prettify())
+    else:
+        response = urllib.request.urlopen(jobURLs[-1])
+        html = response.read()
+        # Documentation of soup: https://www.crummy.com/software/BeautifulSoup/bs4/doc/
+        soup = BeautifulSoup(html, 'html.parser')
+        # save file as Title
+        fileName = "Career Page"
+        # remove / from file name
+        fileName = re.sub('/', '', fileName)
+        fileName = fileName + ".html"
+        print(fileName)
+        htmlFileName = path + fileName
+        htmlOutputFile = open(
+            htmlFileName, "w+")
+        # html to files
+        htmlOutputFile.writelines(soup.prettify())
 
 
 urlsFile = open(
@@ -88,7 +103,7 @@ urls = []
 for line in urlsFile:
     # print(line.rstrip())
     # use "# " to comment out URLs
-    if not "# " in line.rstrip():
+    if "# " not in line.rstrip():
         urls.append(line.rstrip())
         print(line.rstrip())
 
