@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 import mysql.connector
 from pathlib import Path
 import re
+import os
 
 mySQLpasswordFile = open(
     "/Users/kyleodin/Documents/GitHub/py-career-page-search/MySQLpassword.txt", "r")
@@ -109,10 +110,18 @@ for line in urlsFile:
 
 
 for url in urls:
-    # get company name
-    companyName = url.split("/")
-    companyName = companyName[2]
-    unrefinedURLS = getURLsFromPage(url)
-    jobURLs = filterJobsOnUI(unrefinedURLS)
-    jobURLs.append(url)
-    saveURLs(jobURLs, companyName)
+    if os.path.isfile(url):
+        companyName = url.split("/")
+        companyName = companyName[-1]
+        companyName = companyName.split(".")
+        companyName = companyName[0]
+        print(companyName)
+        # TODO: make this take in a manual download instead since some scripting can hide the job URLS
+    else:
+        # get company name
+        companyName = url.split("/")
+        companyName = companyName[2]
+        unrefinedURLS = getURLsFromPage(url)
+        jobURLs = filterJobsOnUI(unrefinedURLS)
+        jobURLs.append(url)
+        saveURLs(jobURLs, companyName)
