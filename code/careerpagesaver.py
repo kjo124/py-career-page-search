@@ -1,9 +1,9 @@
-import urllib.request
-from bs4 import BeautifulSoup
-import mysql.connector
-from pathlib import Path
-import re
 import os
+import re
+from pathlib import Path
+import mysql.connector
+from bs4 import BeautifulSoup
+import urllib.request
 
 mySQLpasswordFile = open(
     "/Users/kyleodin/Documents/GitHub/py-career-page-search/MySQLpassword.txt", "r")
@@ -47,6 +47,17 @@ def getURLsFromPage(careerPageURL):
         if "http" in str(link.get('href')):
             print(link.get('href'))
             unrefinedURLS.append(str(link.get('href')))
+    return unrefinedURLS
+
+
+def getURLsFromFile(careerPageFile):
+    unrefinedURLS = []
+    with open(careerPageFile) as f:
+        soup = BeautifulSoup(f.read(), 'html.parser')
+        for link in soup.find_all('a'):
+            if "http" in str(link.get('href')):
+                print(link.get('href'))
+                unrefinedURLS.append(str(link.get('href')))
     return unrefinedURLS
 
 
@@ -98,6 +109,43 @@ def saveURLs(jobURLs, companyName):
         htmlOutputFile.writelines(soup.prettify())
 
 
+def saveURLsFromFile(jobURLs, companyName):
+    # create companyName directory
+    path = "/Users/kyleodin/Documents/GitHub/py-career-page-search/savedHTML/" + companyName + "/"
+    Path(path).mkdir(parents=True, exist_ok=True)
+    for url in jobURLs[:-1]:
+
+        # output html to files
+        # TODO: Make this save to a company directory
+
+        response = urllib.request.urlopen(url)
+        html = response.read()
+        # Documentation of soup: https://www.crummy.com/software/BeautifulSoup/bs4/doc/
+        soup = BeautifulSoup(html, 'html.parser')
+        # save file as Title
+        fileName = soup.title.string
+        # remove / from file name
+        fileName = re.sub('/', '', fileName)
+        fileName = fileName + ".html"
+        print(fileName)
+        htmlFileName = path + fileName
+        htmlOutputFile = open(
+            htmlFileName, "w+")
+        # html to files
+        htmlOutputFile.writelines(soup.prettify())
+    else:
+        fileName = "Career Page"
+        # remove / from file name
+        fileName = re.sub('/', '', fileName)
+        fileName = fileName + ".html"
+        print(fileName)
+        htmlFileName = path + fileName
+        htmlOutputFile = open(
+            htmlFileName, "w+")
+        # html to files
+        htmlOutputFile.writelines(soup.prettify())
+
+
 urlsFile = open(
     "/Users/kyleodin/Documents/GitHub/py-career-page-search/files/urls", "r")
 urls = []
@@ -116,6 +164,11 @@ for url in urls:
         companyName = companyName.split(".")
         companyName = companyName[0]
         print(companyName)
+        careerPageFile = url
+        unrefinedURLS = getURLsFromFile(careerPageFile)
+        jobURLs = filterJobsOnUI(unrefinedURLS)
+        jobURLs.append(url)
+        saveURLsFromFile(jobURLs, companyName)
         # TODO: make this take in a manual download instead since some scripting can hide the job URLS
     else:
         # get company name

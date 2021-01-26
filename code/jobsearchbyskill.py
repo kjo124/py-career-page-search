@@ -39,7 +39,7 @@ def copyMatchingHTMLfiles(files, searchTerms):
         path = "/Users/kyleodin/Documents/GitHub/py-career-page-search/TermSearching/" + term + "/"
         Path(path).mkdir(parents=True, exist_ok=True)
         for file in files:
-            with open(file) as f:
+            with open(file, 'rb') as f:
                 soup = BeautifulSoup(f.read(), 'html.parser')
                 fileText = soup.get_text()
                 fileText = fileText.replace('\n', '').replace(' ', '').lower()
@@ -50,6 +50,6 @@ def copyMatchingHTMLfiles(files, searchTerms):
                         file, "/Users/kyleodin/Documents/GitHub/py-career-page-search/TermSearching/" + term + "/" + os.path.basename(file))
 
 
-searchTerms = ["java", "sql"]
+searchTerms = ["java", "sql", "python"]
 getAllHTMLfilesInDirectory(directoryPath)
 copyMatchingHTMLfiles(htmlFiles, searchTerms)
