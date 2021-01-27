@@ -18,7 +18,7 @@ def exportFileText(htmlFiles):
         with open(file, 'rb') as f:
             soup = BeautifulSoup(f.read(), 'html.parser')
             fileText = soup.get_text()
-            fileText = fileText.replace('\n', ' ')
+            fileText = fileText.replace('\n', ' ').replace('&amp;', 'and')
             htmlFilesText.append(fileText)
     for text in htmlFilesText:
         print(text)
